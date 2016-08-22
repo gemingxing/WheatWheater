@@ -19,13 +19,13 @@ let history_city_path = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, 
 let ShareSDK_AppKey = "13f51d950af24"
 
 //sina
-let Sina_AppKey = "1262130187"
-let Sina_AppSecret = "b621c2fa81fba409806bd1b95cbfad82"
+let Sina_AppKey = "2886600556"
+let Sina_AppSecret = "dcec663bdc96d24aedc0f13095102834"
 let Sina_OAuth_Html = "http://www.baidu.com"
 
 //QQ
-let QQ_AppID = "1105477372"
-let QQ_AppKey = "qJW9hgLWi6tXNzOl"
+let QQ_AppID = "1105400282"
+let QQ_AppKey = "s3nxhzAXVsFw3jMM"
 
 //wechat
 let weixin_AppID = "wx8571a4f11404252a"

@@ -202,22 +202,152 @@ class MainViewController: UITableViewController, CLLocationManagerDelegate {
     func shareAction(sender:UIBarButtonItem){
         let actionSheet = UIAlertController(title: "分享天气", message: "", preferredStyle: .ActionSheet)
         let sinaAction = UIAlertAction(title: "分享到新浪微博", style: .Default) { (action) in
-            print("\("分享到新浪微博"))")
+            // 1.创建分享参数
+            let shareParames = NSMutableDictionary()
+            
+            shareParames.SSDKSetupShareParamsByText("天气APP",
+                                                    images : Tool.getImageFromView((self.navigationController?.view)!),
+                                                    url : NSURL(string:"http://mob.com"),
+                                                    title : "分享标题",
+                                                    type : SSDKContentType.Image)
+            
+            //2.进行分享
+            ShareSDK.share(SSDKPlatformType.TypeSinaWeibo, parameters: shareParames) { (state : SSDKResponseState, userData : [NSObject : AnyObject]!, contentEntity :SSDKContentEntity!, error : NSError!) -> Void in
+                
+                switch state{
+                    
+                case SSDKResponseState.Success:
+                    print("分享成功")
+                    let alert = UIAlertView(title: "分享成功", message: "分享成功", delegate: self, cancelButtonTitle: "取消")
+                    alert.show()
+                case SSDKResponseState.Fail:
+                    print("分享失败,错误描述:\(error)")
+                case SSDKResponseState.Cancel:
+                    print("分享取消")
+                default:
+                    break
+                }
+            }
+            
+            
         }
         let qqFriendAction = UIAlertAction(title: "分享到QQ好友", style: .Default) { (action) in
-            print("\("分享到QQ好友"))")
+            // 1.创建分享参数
+            let shareParames = NSMutableDictionary()
+            shareParames.SSDKSetupShareParamsByText("天气APP",
+                                                    images : Tool.getImageFromView((self.navigationController?.view)!),
+                                                    url : NSURL(string:"http://mob.com"),
+                                                    title : "分享标题",
+                                                    type : SSDKContentType.Image)
+            
+            //2.进行分享
+            ShareSDK.share(SSDKPlatformType.SubTypeQQFriend, parameters: shareParames) { (state : SSDKResponseState, userData : [NSObject : AnyObject]!, contentEntity :SSDKContentEntity!, error : NSError!) -> Void in
+                
+                switch state{
+                    
+                case SSDKResponseState.Success:
+                    print("分享成功")
+                    let alert = UIAlertView(title: "分享成功", message: "分享成功", delegate: self, cancelButtonTitle: "取消")
+                    alert.show()
+                case SSDKResponseState.Fail:
+                    print("分享失败,错误描述:\(error)")
+                case SSDKResponseState.Cancel:
+                    print("分享取消")
+                default:
+                    break
+                }
+            }
+            
+            
         }
         let qqZoneAction = UIAlertAction(title: "分享到QQ空间", style: .Default) { (action) in
-            print("\("分享到QQ空间"))")
+            // 1.创建分享参数
+            let shareParames = NSMutableDictionary()
+            shareParames.SSDKSetupShareParamsByText("天气APP",
+                                                    images : Tool.getImageFromView((self.navigationController?.view)!),
+                                                    url : NSURL(string:"http://mob.com"),
+                                                    title : "分享标题",
+                                                    type : SSDKContentType.Image)
+            
+            //2.进行分享
+            ShareSDK.share(SSDKPlatformType.SubTypeQZone, parameters: shareParames) { (state : SSDKResponseState, userData : [NSObject : AnyObject]!, contentEntity :SSDKContentEntity!, error : NSError!) -> Void in
+                
+                switch state{
+                    
+                case SSDKResponseState.Success:
+                    print("分享成功")
+                    let alert = UIAlertView(title: "分享成功", message: "分享成功", delegate: self, cancelButtonTitle: "取消")
+                    alert.show()
+                case SSDKResponseState.Fail:
+                    print("分享失败,错误描述:\(error)")
+                case SSDKResponseState.Cancel:
+                    print("分享取消")
+                default:
+                    break
+                }
+            }
+            
+            
         }
         let wechatFriendAction = UIAlertAction(title: "分享到微信好友", style: .Default) { (action) in
-            print("\("分享到微信好友"))")
+            print("\("分享到微信好友")")
+            // 1.创建分享参数
+            let shareParames = NSMutableDictionary()
+            shareParames.SSDKSetupShareParamsByText("天气APP",
+                                                    images : Tool.getImageFromView((self.navigationController?.view)!),
+                                                    url : NSURL(string:"http://mob.com"),
+                                                    title : "分享标题",
+                                                    type : SSDKContentType.Image)
+            
+            //2.进行分享
+            ShareSDK.share(SSDKPlatformType.SubTypeWechatSession, parameters: shareParames) { (state : SSDKResponseState, userData : [NSObject : AnyObject]!, contentEntity :SSDKContentEntity!, error : NSError!) -> Void in
+                
+                switch state{
+                    
+                case SSDKResponseState.Success:
+                    print("分享成功")
+                    let alert = UIAlertView(title: "分享成功", message: "分享成功", delegate: self, cancelButtonTitle: "取消")
+                    alert.show()
+                case SSDKResponseState.Fail:
+                    print("分享失败,错误描述:\(error)")
+                case SSDKResponseState.Cancel:
+                    print("分享取消")
+                default:
+                    break
+                }
+            }
+            
+            
         }
         let wechatCircleAction = UIAlertAction(title: "分享到朋友圈", style: .Default) { (action) in
-            print("\("分享到朋友圈"))")
+            // 1.创建分享参数
+            let shareParames = NSMutableDictionary()
+            shareParames.SSDKSetupShareParamsByText("天气APP",
+                                                    images : Tool.getImageFromView((self.navigationController?.view)!),
+                                                    url : NSURL(string:"http://mob.com"),
+                                                    title : "分享标题",
+                                                    type : SSDKContentType.Image)
+            
+            //2.进行分享
+            ShareSDK.share(SSDKPlatformType.SubTypeWechatTimeline, parameters: shareParames) { (state : SSDKResponseState, userData : [NSObject : AnyObject]!, contentEntity :SSDKContentEntity!, error : NSError!) -> Void in
+                
+                switch state{
+                    
+                case SSDKResponseState.Success:
+                    print("分享成功")
+                    let alert = UIAlertView(title: "分享成功", message: "分享成功", delegate: self, cancelButtonTitle: "取消")
+                    alert.show()
+                case SSDKResponseState.Fail:
+                    print("分享失败,错误描述:\(error)")
+                case SSDKResponseState.Cancel:
+                    print("分享取消")
+                default:
+                    break
+                }
+            }
         }
         let cancleAction = UIAlertAction(title: "取消", style: .Cancel) { (action) in
-            print("\("取消"))")
+            print("\("取消")")
         }
         actionSheet.addAction(sinaAction)
         actionSheet.addAction(qqFriendAction)
@@ -226,14 +356,12 @@ class MainViewController: UITableViewController, CLLocationManagerDelegate {
         actionSheet.addAction(wechatCircleAction)
         actionSheet.addAction(cancleAction)
 
-//         self.view.window?.rootViewController?.presentViewController(actionSheet, animated: true, completion: { 
-//            print("callback")
-//         })
+         self.view.window?.rootViewController?.presentViewController(actionSheet, animated: true, completion: nil)
         
-        self.controller?.presentViewController(actionSheet, animated: true, completion: { 
-            print("callback")
-            
-        })
+//        self.controller?.presentViewController(actionSheet, animated: true, completion: { 
+//            print("callback")
+//            
+//        })
         
 //        self.presentViewController(actionSheet, animated: true) { 
 //            print("callback")
